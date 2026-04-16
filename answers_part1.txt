@@ -1,0 +1,414 @@
+========== PART 1: UNIX UTILITIES ==========
+
+========== TASK 2: sed Commands ==========
+
+Task 2.6: Replace 'active' with 'ACTIVE'
+cat > employees.csv << 'EOF'
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,OH,ACTIVE
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,ACTIVE
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,ACTIVE
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inACTIVE
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,ACTIVE
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,ACTIVE
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inACTIVE
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,ACTIVE
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,OH,ACTIVE
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,ACTIVE
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,OH,ACTIVE
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,ACTIVE
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,OH,ACTIVE
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,ACTIVE
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,OH,inACTIVE
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,OH,ACTIVE
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,ACTIVE
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,OH,ACTIVE
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,ACTIVE
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,OH,ACTIVE
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,ACTIVE
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,OH,ACTIVE
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inACTIVE
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,OH,ACTIVE
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,OH,ACTIVE
+
+Task 2.7: Delete header row (first line)
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,OH,active
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,active
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inactive
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,OH,active
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,active
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,OH,active
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,active
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,OH,active
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,active
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,OH,inactive
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,OH,active
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,active
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,OH,active
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,active
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,OH,active
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,active
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,OH,active
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inactive
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,OH,active
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,OH,active
+
+Task 2.8: Lines 5 through 10
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inactive
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+
+Task 2.9: Replace 'OH' with 'Ohio'
+cat > employees.csv << 'EOF'
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,Ohio,active
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,active
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,Ohio,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,Ohio,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,Ohio,inactive
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,Ohio,active
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,active
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,Ohio,active
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,active
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,Ohio,active
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,active
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,Ohio,inactive
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,Ohio,active
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,active
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,Ohio,active
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,active
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,Ohio,active
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,active
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,Ohio,active
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inactive
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,Ohio,active
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,Ohio,active
+
+Task 2.10: Remove commas (space-separated)
+cat > employees.csv << 'EOF'
+employee_id first_name last_name department job_title salary hire_date city state status
+1001 Alice Johnson Engineering Software Engineer 92000 2019-03-15 Columbus OH active
+1002 Bob Smith Marketing Marketing Manager 85000 2018-07-22 Chicago IL active
+1003 Carol Williams Engineering Senior Engineer 115000 2017-11-10 Columbus OH active
+1004 David Brown Finance Financial Analyst 78000 2020-01-15 New York NY inactive
+1005 Eva Jones HR HR Specialist 62000 2019-09-03 Columbus OH active
+1006 Frank Miller Engineering DevOps Engineer 95000 2018-05-20 Chicago IL active
+1007 Grace Davis Marketing Content Creator 58000 2021-02-28 Columbus OH inactive
+1008 Henry Garcia Finance Accountant 72000 2020-08-14 New York NY active
+1009 Ivy Martinez Engineering Software Engineer 88000 2019-12-01 Columbus OH active
+1010 Jack Robinson HR HR Manager 105000 2016-04-18 Chicago IL active
+1011 Karen Lee Marketing SEO Specialist 63000 2020-11-30 Columbus OH active
+1012 Larry Clark Finance Financial Analyst 81000 2018-09-12 New York NY active
+1013 Mary Rodriguez Engineering Senior DevOps 125000 2015-07-09 Columbus OH active
+1014 Nancy Lewis Marketing Marketing Director 135000 2014-03-25 Chicago IL active
+1015 Oliver Walker HR Recruiter 59000 2021-06-17 Columbus OH inactive
+1016 Patricia Hall Engineering QA Engineer 72000 2019-10-08 Columbus OH active
+1017 Quincy Young Finance Finance Manager 118000 2017-12-03 New York NY active
+1018 Rachel Allen Marketing Social Media 54000 2021-08-22 Columbus OH active
+1019 Steve King Engineering Software Engineer 97000 2018-04-14 Chicago IL active
+1020 Tina Wright HR HR Coordinator 51000 2022-01-10 Columbus OH active
+1021 Ulysses Scott Finance Senior Analyst 94000 2019-06-19 New York NY active
+1022 Victoria Torres Engineering Engineering Manager 145000 2013-11-27 Columbus OH active
+1023 William Peterson Marketing Analytics Manager 108000 2016-09-30 Chicago IL inactive
+1024 Xena Green HR Training Specialist 67000 2020-04-05 Columbus OH active
+1025 Yosef Adams Engineering Software Engineer 89000 2020-07-21 Columbus OH active
+
+========== END TASK 2 ==========
+
+========== TASK 3: awk Commands ==========
+
+Task 3.11: Print first_name and last_name only
+ 
+first_name last_name
+Alice Johnson
+Bob Smith
+Carol Williams
+David Brown
+Eva Jones
+Frank Miller
+Grace Davis
+Henry Garcia
+Ivy Martinez
+Jack Robinson
+Karen Lee
+Larry Clark
+Mary Rodriguez
+Nancy Lewis
+Oliver Walker
+Patricia Hall
+Quincy Young
+Rachel Allen
+Steve King
+Tina Wright
+Ulysses Scott
+Victoria Torres
+William Peterson
+Xena Green
+Yosef Adams
+
+Task 3.12: Employees earning more than 0,000
+first_name last_name - $salary
+Alice Johnson - $92000
+Carol Williams - $115000
+Frank Miller - $95000
+Jack Robinson - $105000
+Mary Rodriguez - $125000
+Nancy Lewis - $135000
+Quincy Young - $118000
+Steve King - $97000
+Ulysses Scott - $94000
+Victoria Torres - $145000
+William Peterson - $108000
+
+Task 3.13: Average salary of all employees
+Average salary: $84923
+
+Task 3.14: Finance department employees (dept & job_title)
+Finance - Financial Analyst
+Finance - Accountant
+Finance - Financial Analyst
+Finance - Finance Manager
+Finance - Senior Analyst
+
+Task 3.15: Employee count per department
+Marketing: 6 employees
+Finance: 5 employees
+Engineering: 9 employees
+department: 1 employees
+HR: 5 employees
+
+========== END TASK 3 ==========
+
+Task 3.15 (formatted): Employee count per department
+Marketing      :  6 employees
+Finance        :  5 employees
+Engineering    :  9 employees
+department     :  1 employees
+HR             :  5 employees
+
+========== TASK 4: sort & uniq Commands ==========
+
+Task 4.16: Sort by last name (alphabetical)
+cat > employees.csv << 'EOF'
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,OH,active
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,OH,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,active
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inactive
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,OH,active
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,OH,active
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,OH,active
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,active
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,active
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,OH,active
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,active
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,OH,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inactive
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,active
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,OH,active
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,active
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,active
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,OH,active
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,OH,inactive
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,active
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,OH,active
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,active
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+
+Task 4.17: Sort by salary (descending numeric)
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,OH,active
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,active
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,OH,active
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,active
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,active
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inactive
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,active
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,active
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,OH,active
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,OH,active
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,OH,active
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,active
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,OH,active
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,OH,active
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,OH,active
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,active
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,OH,inactive
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inactive
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,OH,active
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,OH,active
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+cat > employees.csv << 'EOF'
+
+Task 4.18: Unique departments
+Engineering
+Finance
+HR
+Marketing
+department
+
+Task 4.19: Cities with employee counts (sorted by count desc)
+     14 Columbus
+      6 Chicago
+      5 New York
+      1 city
+
+========== END TASK 4 ==========
+
+========== TASK 5: cut Commands ==========
+
+Task 5.20: employee_id and department columns
+cat > employees.csv << 'EOF'
+employee_id,department
+1001,Engineering
+1002,Marketing
+1003,Engineering
+1004,Finance
+1005,HR
+1006,Engineering
+1007,Marketing
+1008,Finance
+1009,Engineering
+1010,HR
+1011,Marketing
+1012,Finance
+1013,Engineering
+1014,Marketing
+1015,HR
+1016,Engineering
+1017,Finance
+1018,Marketing
+1019,Engineering
+1020,HR
+1021,Finance
+1022,Engineering
+1023,Marketing
+1024,HR
+1025,Engineering
+
+Task 5.21: Hire year only
+cat 
+hire
+2019
+2018
+2017
+2020
+2019
+2018
+2021
+2020
+2019
+2016
+2020
+2018
+2015
+2014
+2021
+2019
+2017
+2021
+2018
+2022
+2019
+2013
+2016
+2020
+2020
+
+Task 5.22: Name and salary (sorted by salary desc)
+Victoria,Torres,145000
+Nancy,Lewis,135000
+Mary,Rodriguez,125000
+Quincy,Young,118000
+Carol,Williams,115000
+William,Peterson,108000
+Jack,Robinson,105000
+Steve,King,97000
+Frank,Miller,95000
+Ulysses,Scott,94000
+Alice,Johnson,92000
+Yosef,Adams,89000
+Ivy,Martinez,88000
+Bob,Smith,85000
+Larry,Clark,81000
+David,Brown,78000
+Patricia,Hall,72000
+Henry,Garcia,72000
+Xena,Green,67000
+Karen,Lee,63000
+Eva,Jones,62000
+Oliver,Walker,59000
+Grace,Davis,58000
+Rachel,Allen,54000
+Tina,Wright,51000
+first_name,last_name,salary
+cat > employees.csv << 'EOF'
+
+Task 5.23: First 10 characters of each line
+cat > empl
+employee_i
+1001,Alice
+1002,Bob,S
+1003,Carol
+1004,David
+1005,Eva,J
+1006,Frank
+1007,Grace
+1008,Henry
+1009,Ivy,M
+1010,Jack,
+1011,Karen
+1012,Larry
+1013,Mary,
+1014,Nancy
+1015,Olive
+1016,Patri
+1017,Quinc
+1018,Rache
+1019,Steve
+1020,Tina,
+1021,Ulyss
+1022,Victo
+1023,Willi
+1024,Xena,
+1025,Yosef
+
+========== END TASK 5 ==========
+========== TASK 6: Bonus Pipelines ==========
+
+Task 6.24: Unique job titles in Engineering (alphabetical)
+DevOps Engineer
+Engineering Manager
+QA Engineer
+Senior DevOps
+Senior Engineer
+Software Engineer
+
+Task 6.25: Top 3 highest-paid employees
+Nancy,Lewis,135000
+Mary,Rodriguez,125000
+Quincy,Young,118000
+
+Task 6.25 (alternative): Top 3 highest-paid
+Victoria,Torres,145000
+Nancy,Lewis,135000
+Mary,Rodriguez,125000
+

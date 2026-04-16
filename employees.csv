@@ -1,0 +1,27 @@
+cat > employees.csv << 'EOF'
+employee_id,first_name,last_name,department,job_title,salary,hire_date,city,state,status
+1001,Alice,Johnson,Engineering,Software Engineer,92000,2019-03-15,Columbus,OH,active
+1002,Bob,Smith,Marketing,Marketing Manager,85000,2018-07-22,Chicago,IL,active
+1003,Carol,Williams,Engineering,Senior Engineer,115000,2017-11-10,Columbus,OH,active
+1004,David,Brown,Finance,Financial Analyst,78000,2020-01-15,New York,NY,inactive
+1005,Eva,Jones,HR,HR Specialist,62000,2019-09-03,Columbus,OH,active
+1006,Frank,Miller,Engineering,DevOps Engineer,95000,2018-05-20,Chicago,IL,active
+1007,Grace,Davis,Marketing,Content Creator,58000,2021-02-28,Columbus,OH,inactive
+1008,Henry,Garcia,Finance,Accountant,72000,2020-08-14,New York,NY,active
+1009,Ivy,Martinez,Engineering,Software Engineer,88000,2019-12-01,Columbus,OH,active
+1010,Jack,Robinson,HR,HR Manager,105000,2016-04-18,Chicago,IL,active
+1011,Karen,Lee,Marketing,SEO Specialist,63000,2020-11-30,Columbus,OH,active
+1012,Larry,Clark,Finance,Financial Analyst,81000,2018-09-12,New York,NY,active
+1013,Mary,Rodriguez,Engineering,Senior DevOps,125000,2015-07-09,Columbus,OH,active
+1014,Nancy,Lewis,Marketing,Marketing Director,135000,2014-03-25,Chicago,IL,active
+1015,Oliver,Walker,HR,Recruiter,59000,2021-06-17,Columbus,OH,inactive
+1016,Patricia,Hall,Engineering,QA Engineer,72000,2019-10-08,Columbus,OH,active
+1017,Quincy,Young,Finance,Finance Manager,118000,2017-12-03,New York,NY,active
+1018,Rachel,Allen,Marketing,Social Media,54000,2021-08-22,Columbus,OH,active
+1019,Steve,King,Engineering,Software Engineer,97000,2018-04-14,Chicago,IL,active
+1020,Tina,Wright,HR,HR Coordinator,51000,2022-01-10,Columbus,OH,active
+1021,Ulysses,Scott,Finance,Senior Analyst,94000,2019-06-19,New York,NY,active
+1022,Victoria,Torres,Engineering,Engineering Manager,145000,2013-11-27,Columbus,OH,active
+1023,William,Peterson,Marketing,Analytics Manager,108000,2016-09-30,Chicago,IL,inactive
+1024,Xena,Green,HR,Training Specialist,67000,2020-04-05,Columbus,OH,active
+1025,Yosef,Adams,Engineering,Software Engineer,89000,2020-07-21,Columbus,OH,active
